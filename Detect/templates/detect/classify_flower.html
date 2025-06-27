@@ -1,16 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>Flower Classification</title>
 </head>
 <body>
+    <h1>Flower Classification System</h1>
     <h2>Upload Flower Image</h2>
+    
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" name="flower_image" accept="image/*" required>
         <button type="submit">Classify Flower</button>
     </form>
+
+    {% if prediction %}
+    <div class="prediction">
+        <h3>Classification Result</h3>
+        <p><strong>Predicted Flower:</strong> {{ prediction.class_name }}</p>
+        <p><strong>Confidence:</strong> {{ prediction.confidence }}%</p>
+        {% if uploaded_image_url %}
+        <div style="margin-top: 15px;">
+            <img src="{{ uploaded_image_url }}" alt="Uploaded Flower" style="max-width: 100%; border-radius: 4px;">
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
 </body>
 </html>

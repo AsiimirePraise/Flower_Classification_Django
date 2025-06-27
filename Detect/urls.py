@@ -1,8 +1,8 @@
 
 from django.urls import path
 
-from .views import views
+from . import views
 
 urlpatterns = [
-    path('detect/', views.classify_flower, name='detect'),
+    path('', views.classify_flower, name='detect'),
 ]

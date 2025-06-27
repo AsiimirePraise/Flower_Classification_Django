@@ -1,0 +1,41 @@
+{% load static %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flower</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: lightgreen;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQEYY_wOs51Z98spmNVFvQBR4nstF0TSoBabFR-IziQHNQVxONb2lAM3G6kV9BaMlnnyMCdM8rTyPo57R7v_oNnB-J9hqPrKHYVdS8A1Wv99OMY269sznV4Orua-lzPD0eaInq9XQ&usqp=CAc" alt="Logo" style="width: 30px; height: 30px; border-radius: 50%;" />
+          Flower Classifier
+        </a>
+        <div>
+          <a href="/login" class="btn btn-light btn-sm">Login</a>
+          <a href="/signup" class="btn btn-light btn-sm">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+
+<div class="text-center flower-bg" style="background-image: url('{% static 'images/flower-bg.jpg' %}');">           
+    <h1 class="mt-20">Welcome to My First Flower Classifier</h1>        
+    <p class="mt-3">              
+        Discover the Beauty of Flowers Through AI! This application uses a Convolutional Neural Network (CNN) to classify different types of flowers.        
+    </p>  
+</div>
+
+    <!-- Footer -->
+    <footer class=" text-white text-center py-3 fixed-bottom" style="background-color: lightgreen;">
+      &copy; 2025 FlowerClassifier. All rights reserved.
+    </footer>
+  </body>
+</html>

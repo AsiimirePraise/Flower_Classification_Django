@@ -10,6 +10,13 @@ def classify_flower(request):
         # Load the pre-trained model
         model = load_model('CNN/flowers_model.h5')
         
+        class_names = [
+            'Daisy',
+            'Dandelion', 
+            'Rose',
+            'Sunflower',
+            'Tulip'
+        ]
         # Get the image from the request
         flower_image = request.FILES['flower_image']
         
@@ -23,6 +30,11 @@ def classify_flower(request):
         predictions = model.predict(image)
         predicted_label = np.argmax(predictions[0])
         
-        return HttpResponse(f'Predicted label: {predicted_label}')
+        # Get the flower name instead of just the label
+        predicted_flower = class_names[predicted_label]
+        confidence = float(predictions[0][predicted_label]) * 100
+        
+        
+        return HttpResponse(f'Predicted flower: {predicted_flower} (Confidence: {confidence:.2f}%)')
     
     return render(request, 'detect/classify_flower.html')
